@@ -96,6 +96,9 @@ set number
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
+" set F5 to save, compile and run
+map <F5> :w<CR>:!make && ./run<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
