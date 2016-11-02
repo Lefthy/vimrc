@@ -11,7 +11,8 @@ Plugin 'gmarik/vundle'
 
 "scripts on GitHub repos
 Plugin 'scrooloose/nerdtree'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
+"Bundle 'Valloric/YouCompleteMe'
 "Plugin 'vim-scripts/AutoComplPop'
 "Plugin 'ervandew/supertab'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -191,6 +192,7 @@ set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
 
 """"""""""""""""""""""""""""""
 " => Navigation stuff
