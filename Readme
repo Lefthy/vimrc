@@ -1,3 +1,5 @@
 1. git submodule init
 2. git submodule update
-3. vim +PluginInstall +qall
+3. run install.sh to move .byobu/, .vim/, and .vimrc to ~
+4. (optional) run install_tmux_conf.sh to copy and backup .tmux.conf to ~
+5. vim +PluginInstall +qall
