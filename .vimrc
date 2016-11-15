@@ -12,24 +12,9 @@ Plugin 'gmarik/vundle'
 "scripts on GitHub repos
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
-"Bundle 'Valloric/YouCompleteMe'
-"Plugin 'vim-scripts/AutoComplPop'
-"Plugin 'ervandew/supertab'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " scripts from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Plugin 'FuzzyFinder'
-" " scripts not on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin shortcuts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'easymotion/vim-easymotion'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -48,7 +33,6 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
-
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -56,7 +40,16 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-
+" set working directiory to file your editing
+set autochdir
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>
+map <leader>t :tabnew<cr>
+map <leader>d :tabn<cr>
+map <leader>a :tabp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,13 +98,16 @@ map <F5> :w<CR>:!make && ./run<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
+set t_Co=256
+let g:quantum_black=1
+set background=dark
+colorscheme quantum
+let g:airline_theme='quantum'
 
-try
-    colorscheme desert
-catch
-endtry
-
-"set background=dark
+" For vim > 8.0 and neovim
+if has("termguicolors")
+	set termguicolors
+endif
 
 " Set extra options when running in GUI mode
 "if has("gui_running")
@@ -141,7 +137,7 @@ set ffs=unix,dos,mac
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab
+"set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -154,7 +150,7 @@ set tabstop=4
 set lbr
 set tw=500
 
-set ai "Auto indent
+"set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
@@ -213,3 +209,8 @@ function! HasPaste()
     en
     return ''
 endfunction
+
+""""""""""""""""""""""""""""""
+" => Nerd commenter
+""""""""""""""""""""""""""""""
+
