@@ -99,10 +99,13 @@ map <F5> :w<CR>:!make && ./run<CR>
 " Enable syntax highlighting
 syntax enable 
 set t_Co=256
-let g:quantum_black=1
-set background=dark
-colorscheme quantum
-let g:airline_theme='quantum'
+try
+	let g:quantum_black=1
+	set background=dark
+	colorscheme quantum
+	let g:airline_theme='quantum'
+catch
+endtry
 
 " For vim > 8.0 and neovim
 if has("termguicolors")
