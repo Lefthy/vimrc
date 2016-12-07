@@ -107,11 +107,6 @@ try
 catch
 endtry
 
-" For vim > 8.0 and neovim
-if has("termguicolors")
-	set termguicolors
-endif
-
 " Set extra options when running in GUI mode
 "if has("gui_running")
 "    set guioptions-=T
@@ -216,4 +211,13 @@ endfunction
 """"""""""""""""""""""""""""""
 " => Nerd commenter
 """"""""""""""""""""""""""""""
-
+function! LoadCscope()
+    let db = findfile("cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+    endif
+endfunction
+au BufEnter /* call LoadCscope()
