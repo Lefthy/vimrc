@@ -15,6 +15,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tyrannicaltoucan/vim-quantum'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'morhetz/gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -97,23 +98,17 @@ map <F5> :w<CR>:!make && ./run<CR>
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
-set t_Co=256
-try
-	let g:quantum_black=1
-	set background=dark
-	colorscheme quantum
-	let g:airline_theme='quantum'
-catch
-endtry
-
-" Set extra options when running in GUI mode
-"if has("gui_running")
-"    set guioptions-=T
-"    set guioptions-=e
-"    set t_Co=256
-"    set guitablabel=%M\ %t
-"endif
+syntax enable
+set background=dark
+set termguicolors
+if &term =~# '^screen'
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+"colorscheme quantum
+"let g:airline_theme='quantum'
+colorscheme gruvbox
+let g:gruvbox_italic=1
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
